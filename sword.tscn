@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuca3jipiss73"]
+
+[ext_resource type="Texture2D" uid="uid://cyifprygyg3hd" path="res://art/sword.webp" id="1_4imja"]
+[ext_resource type="Script" path="res://Sword.gd" id="2_vuk08"]
+[ext_resource type="Texture2D" uid="uid://bpwomol66axus" path="res://icon.svg" id="3_nw2pn"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SwordSprite" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
+texture = ExtResource("1_4imja")
+offset = Vector2(400, 0)
+script = ExtResource("2_vuk08")
+
+[node name="Sprite2D" type="Sprite2D" parent="SwordSprite"]
+visible = false
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_nw2pn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
