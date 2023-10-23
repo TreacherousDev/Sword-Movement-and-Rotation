@@ -13,7 +13,6 @@ offset = Vector2(400, 0)
 script = ExtResource("2_vuk08")
 
 [node name="Sprite2D" type="Sprite2D" parent="SwordSprite"]
-visible = false
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_nw2pn")
 
