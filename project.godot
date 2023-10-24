@@ -10,7 +10,6 @@ config_version=5
 
 [application]
 
-config/name="Project SwordLike"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
