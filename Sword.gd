@@ -2,7 +2,10 @@ extends Sprite2D
 
 var rotating = false
 var orientation = "right"
+@onready var sword_size : int = texture.get_width()
 
+func _ready():
+	offset.x = sword_size / 2
 
 func _process(_delta):
 
@@ -33,17 +36,17 @@ func rotate_sword(to_rotation_if_same: int, to_rotation_if_different: int, clock
 		rotation_value -= 360 if (rotation_degrees < rotation_value) else 0
 
 	var target_rotation = rotation_degrees + rotation_value - (int(rotation_degrees) % 360)
-
+	
 	if to_orientation == orientation:
 		match(orientation):
 			"right":
-				handle_rotation(target_rotation, Vector2(800, 0), "left", 1)
+				handle_rotation(target_rotation, Vector2.RIGHT * sword_size, "left", 1)
 			"down":
-				handle_rotation(target_rotation, Vector2(0, 800), "up", 1)
+				handle_rotation(target_rotation, Vector2.DOWN * sword_size, "up", 1)
 			"left":
-				handle_rotation(target_rotation, Vector2(-800, 0), "right", 1)
+				handle_rotation(target_rotation, Vector2.LEFT * sword_size, "right", 1)
 			"up":
-				handle_rotation(target_rotation, Vector2(0, -800), "down", 1)
+				handle_rotation(target_rotation, Vector2.UP * sword_size, "down", 1)
 	else:
 		handle_rotation(target_rotation, Vector2.ZERO, to_orientation, 0)
 
@@ -52,7 +55,7 @@ func handle_rotation(target_rotation: int, position_value: Vector2, orientation_
 	rotating = true
 	
 	if move == true:
-		offset.x = -400
+		offset.x = -(sword_size / 2)
 		global_position += position_value
 
 	var tween = get_tree().create_tween()
@@ -60,7 +63,7 @@ func handle_rotation(target_rotation: int, position_value: Vector2, orientation_
 	await get_tree().create_timer(delay).timeout
 	
 	if move == true:
-		offset.x = 400
+		offset.x = (sword_size / 2)
 		global_position += position_value
 
 	orientation = orientation_value

@@ -20,7 +20,6 @@ sources/0 = SubResource("TileSetAtlasSource_wdffd")
 [node name="SwordSprite" type="Sprite2D" parent="."]
 position = Vector2(-2, 0)
 texture = ExtResource("1_4imja")
-offset = Vector2(400, 0)
 script = ExtResource("2_vuk08")
 
 [node name="Sprite2D" type="Sprite2D" parent="SwordSprite"]
@@ -29,7 +28,7 @@ texture = ExtResource("3_nw2pn")
 
 [node name="Camera2D" type="Camera2D" parent="SwordSprite"]
 position = Vector2(2, 0)
-zoom = Vector2(0.3, 0.3)
+zoom = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 

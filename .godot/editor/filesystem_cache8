@@ -1,9 +1,10 @@
 2a60927148abd1d33b818b535e306557
-::res://::1698152864
+::res://::1698156937
 icon.svg::CompressedTexture2D::3485541870048193574::1697971717::1697971721::1::::<><>::
 README.md::TextFile::-1::1698151642::0::1::::<><>::
-Sword.gd::GDScript::-1::1698151813::0::1::::<>Sprite2D<>::
-sword.tscn::PackedScene::6180797483645844500::1698151895::0::1::::<><>::uid://cyifprygyg3hd<>res://Sword.gd<>uid://bpwomol66axus
-::res://art/::1698152350
+Sword.gd::GDScript::-1::1698156937::0::1::::<>Sprite2D<>::
+sword.tscn::PackedScene::6180797483645844500::1698156937::0::1::::<><>::uid://cyifprygyg3hd<>res://Sword.gd<>uid://bpwomol66axus<>uid://cdwbwaipagvpy
+::res://art/::1698156995
+20747-4-transparent-sword-clip-art.png::CompressedTexture2D::8716991249156708928::1698156995::1698156996::1::::<><>::
 dark.png::CompressedTexture2D::5028924226388515834::1698152344::1698152350::1::::<><>::
 sword.webp::CompressedTexture2D::6474219938881074769::1697971817::1697971864::1::::<><>::
