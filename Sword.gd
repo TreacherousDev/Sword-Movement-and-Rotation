@@ -22,10 +22,10 @@ func _process(_delta):
 			rotate_sword(90, 270, clockwise, "up")
 
 
-func rotate_sword(rotation_if_same: int, rotation_if_different: int, clockwise: bool, to_orientation: String):
+func rotate_sword(to_rotation_if_same: int, to_rotation_if_different: int, clockwise: bool, to_orientation: String):
 	rotation_degrees = wrapf(rotation_degrees, 0, 360)
 	
-	var rotation_value = rotation_if_same if (to_orientation == orientation) else rotation_if_different
+	var rotation_value = to_rotation_if_same if (to_orientation == orientation) else to_rotation_if_different
 
 	if clockwise == true:
 		rotation_value += 360 if (rotation_degrees > rotation_value) else 0
