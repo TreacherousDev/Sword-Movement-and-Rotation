@@ -37,18 +37,25 @@ func rotate_sword(to_rotation_if_same: int, to_rotation_if_different: int, clock
 
 	var target_rotation = rotation_degrees + rotation_value - (int(rotation_degrees) % 360)
 	
+	var move_direction := Vector2.ZERO
+	var move: bool = to_orientation == orientation
+
 	if to_orientation == orientation:
 		match(orientation):
 			"right":
-				handle_rotation(target_rotation, Vector2.RIGHT * sword_size, "left", 1)
+				move_direction = Vector2.RIGHT * sword_size
+				to_orientation = "left"
 			"down":
-				handle_rotation(target_rotation, Vector2.DOWN * sword_size, "up", 1)
+				move_direction = Vector2.DOWN * sword_size
+				to_orientation = "up"
 			"left":
-				handle_rotation(target_rotation, Vector2.LEFT * sword_size, "right", 1)
+				move_direction = Vector2.LEFT * sword_size
+				to_orientation = "right"
 			"up":
-				handle_rotation(target_rotation, Vector2.UP * sword_size, "down", 1)
-	else:
-		handle_rotation(target_rotation, Vector2.ZERO, to_orientation, 0)
+				move_direction = Vector2.UP * sword_size
+				to_orientation = "down"
+
+	handle_rotation(target_rotation, move_direction, to_orientation, move)
 
 func handle_rotation(target_rotation: int, position_value: Vector2, orientation_value: String, move: bool):
 	var delay = 0.3
