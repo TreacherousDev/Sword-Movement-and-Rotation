@@ -23,13 +23,13 @@ func check_input():
 	elif Input.is_action_just_pressed("up"):
 		rotate_sword(90, 270, false, "up")
 
-	elif Input.is_action_just_pressed("ui_right"):
+	elif Input.is_action_just_pressed("right2"):
 		rotate_sword(180, 0, true, "right")
-	elif Input.is_action_just_pressed("ui_down"):
+	elif Input.is_action_just_pressed("down2"):
 		rotate_sword(270, 90, true, "down")
-	elif Input.is_action_just_pressed("ui_left"):
+	elif Input.is_action_just_pressed("left2"):
 		rotate_sword(0, 180, true, "left")
-	elif Input.is_action_just_pressed("ui_up"):
+	elif Input.is_action_just_pressed("up2"):
 		rotate_sword(90, 270, true, "up")
 		
 	
@@ -39,7 +39,7 @@ func rotate_sword(to_rotation_if_same: int, to_rotation_if_different: int, clock
 	var target_rotation = to_rotation_if_same if (to_orientation == orientation) else to_rotation_if_different
 
 	#add / subtract 1 full rotation so interpolation happens in the proper direction
-	#ex: 270 to 90 clockwise will be 270 to 450, since negatively incrementing will be ccw rotation
+	#ex: 270 to 90 clockwise will be -90 to 90, since negatively incrementing will be ccw rotation
 	#rotation will be wrapped back to 0-360 on the next rotation call
 	if clockwise == true:
 		rotation_degrees -= 360 if (rotation_degrees > target_rotation) else 0
