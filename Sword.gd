@@ -1,12 +1,16 @@
-extends Sprite2D
+extends Node2D
 
 var rotating = false
 var orientation = "right"
 var delay = 0.15
-@onready var sword_size : int = texture.get_width()
+@export var sword : CharacterBody2D
+@export var sword_sprite : Sprite2D
+@onready var sword_size = sword_sprite.texture.get_width()
+
 
 func _ready():
-	offset.x = sword_size / 2
+#	offset.x = sword_size / 2
+	pass
 
 func _process(_delta):
 	if !rotating:
@@ -70,7 +74,7 @@ func handle_rotation(target_rotation: int, position_value: Vector2, orientation_
 	rotating = true
 	
 	if move == true:
-		offset.x = -(sword_size / 2)
+		sword.position.x = -(sword_size / 2)
 		global_position += position_value
 
 	var tween = get_tree().create_tween()
@@ -78,7 +82,7 @@ func handle_rotation(target_rotation: int, position_value: Vector2, orientation_
 	await tween.finished
 	
 	if move == true:
-		offset.x = (sword_size / 2)
+		sword.position.x = (sword_size / 2)
 		global_position += position_value
 
 	orientation = orientation_value
