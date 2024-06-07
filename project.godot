@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Sword Rotation and Movement"
-config/features=PackedStringArray("4.0", "Mobile")
+run/main_scene="res://sword.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [input]

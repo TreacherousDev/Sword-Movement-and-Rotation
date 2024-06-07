@@ -2,7 +2,8 @@ extends Node2D
 
 var rotating = false
 var orientation = "right"
-var delay = 0.15
+var delay = 0.3
+var clockwise_rotation = true
 @export var sword : CharacterBody2D
 @export var sword_sprite : Sprite2D
 @onready var sword_size = sword_sprite.texture.get_width()
@@ -15,45 +16,41 @@ func _ready():
 func _process(_delta):
 	if !rotating:
 		check_input()
+	update_mechanics()
+
+
+func update_mechanics():
+	if Input.is_action_just_pressed("right2"):
+		clockwise_rotation = !clockwise_rotation
+		print(clockwise_rotation)
 
 
 func check_input():
 	if Input.is_action_just_pressed("right"):
-		rotate_sword(180, 0, false, "right")
+		rotate_sword(180, 0, clockwise_rotation, "right")
 	elif Input.is_action_just_pressed("down"):
-		rotate_sword(270, 90, false, "down")
+		rotate_sword(270, 90, clockwise_rotation, "down")
 	elif Input.is_action_just_pressed("left"):
-		rotate_sword(0, 180, false, "left")
+		rotate_sword(0, 180, clockwise_rotation, "left")
 	elif Input.is_action_just_pressed("up"):
-		rotate_sword(90, 270, false, "up")
-
-	elif Input.is_action_just_pressed("right2"):
-		rotate_sword(180, 0, true, "right")
-	elif Input.is_action_just_pressed("down2"):
-		rotate_sword(270, 90, true, "down")
-	elif Input.is_action_just_pressed("left2"):
-		rotate_sword(0, 180, true, "left")
-	elif Input.is_action_just_pressed("up2"):
-		rotate_sword(90, 270, true, "up")
-		
-	
+		rotate_sword(90, 270, clockwise_rotation, "up")
 
 
-func rotate_sword(to_rotation_if_same: int, to_rotation_if_different: int, clockwise: bool, to_orientation: String):
+func rotate_sword(to_rotation_if_same: int, to_rotation_if_different: int, is_clockwise: bool, to_orientation: String):
 	var target_rotation = to_rotation_if_same if (to_orientation == orientation) else to_rotation_if_different
 
 	#add / subtract 1 full rotation so interpolation happens in the proper direction
 	#ex: 270 to 90 clockwise will be -90 to 90, since negatively incrementing will be ccw rotation
 	#rotation will be wrapped back to 0-360 on the next rotation call
-	if clockwise == true:
+	if is_clockwise == true:
 		rotation_degrees -= 360 if (rotation_degrees > target_rotation) else 0
-	elif clockwise == false:
+	elif is_clockwise == false:
 		rotation_degrees += 360 if (rotation_degrees < target_rotation) else 0
 	
 	var move_direction := Vector2.ZERO
 	var move: bool = to_orientation == orientation
 
-	if to_orientation == orientation:
+	if move == true:
 		match(orientation):
 			"right":
 				move_direction = Vector2.RIGHT * sword_size
